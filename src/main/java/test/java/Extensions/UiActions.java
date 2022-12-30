@@ -3,6 +3,7 @@ package test.java.Extensions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import test.java.Utilities.Base;
 
 public class UiActions extends Base {
@@ -18,6 +19,26 @@ public class UiActions extends Base {
     {
         wait.until(ExpectedConditions.elementToBeClickable(elem));
         return elem.getText();
+    }
+
+    @Step("Update text - sendKeys [UiActions]")
+    public static void UpdateText(WebElement elem, String text)
+    { wait.until(ExpectedConditions.visibilityOf(elem));
+        elem.sendKeys(text);
+    }
+
+    @Step ("Choose from drop down menu [UiActions]")
+    public static void UpdateDropDown(WebElement elem, String text)
+    { wait.until(ExpectedConditions.visibilityOf(elem));
+        Select dropdown=new Select(elem);
+        dropdown.selectByVisibleText(text);
+    }
+
+    @Step("Mouse hover element [UiActions]")
+    public static void MouseHover(WebElement elem1, WebElement elem2)
+    {
+        actions.moveToElement(elem1).perform();
+        actions.moveToElement(elem2).click().perform();
     }
 
 }
