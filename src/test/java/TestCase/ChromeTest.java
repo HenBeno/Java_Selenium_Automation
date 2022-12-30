@@ -9,8 +9,7 @@ import test.java.Utilities.CommonOps;
 public class ChromeTest extends CommonOps {
 
     @Test
-    public void test()
-    {
+    public void test() throws InterruptedException {
         TestFlows.basicTest();
     }
 }

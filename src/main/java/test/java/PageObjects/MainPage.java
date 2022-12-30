@@ -16,9 +16,20 @@ public class MainPage extends Base {
     public WebElement navigationBtn;
     @FindBy(how = How.XPATH,using ="//div[@class='card-body']/*[@href='web-form.html']" )
     public WebElement webFormText;
+    @FindBy(how = How.XPATH,using ="//p[@class='lead']/a[text()='GitHub']" )
+    public WebElement gitBtn;
+    @FindBy(how = How.XPATH,using ="//article//a/img[contains(@src, 'https://avatars.githubusercontent.com')]" )
+    public WebElement gitLogo;
+    @FindBy(how = How.XPATH,using ="//a[@title='LICENSE']" )
+    public WebElement licenseElm;
+
 
     public void clickNavigationBtn(){
         UiActions.click(navigationBtn);
+    }
+
+    public void clickGitBtn(){
+        UiActions.click(gitBtn);
     }
 
     public String getWebFormText(){
