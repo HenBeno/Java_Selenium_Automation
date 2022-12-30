@@ -1,5 +1,6 @@
 package test.java.Utilities;
 
+import org.openqa.selenium.interactions.Actions;
 import test.java.Extensions.UiActions;
 import test.java.PageObjects.LoginPage;
 import test.java.PageObjects.MainPage;
@@ -12,6 +13,8 @@ public class Base {
     protected static WebDriver driver;
 
     protected static UiActions action;
+
+    protected static Actions actions;
 
     // Page Objects
 
