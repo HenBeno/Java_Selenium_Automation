@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import test.java.Utilities.Base;
 
+import java.util.List;
+
 public class MainPage extends Base {
 
     WebDriver driver;
@@ -22,6 +24,13 @@ public class MainPage extends Base {
     public WebElement gitLogo;
     @FindBy(how = How.XPATH,using ="//a[@title='LICENSE']" )
     public WebElement licenseElm;
+    @FindBy(how = How.XPATH,using ="//turbo-frame" )
+    public List<WebElement> turboFrameElements;
+    @FindBy(how = How.XPATH,using ="//h2[@class='Box-title']" )
+    public WebElement readMeHeader;
+    @FindBy(how = How.XPATH,using ="//a[@href='https://github.com/'][1]" )
+    public WebElement gitSmallLogo;
+
 
 
     public void clickNavigationBtn(){

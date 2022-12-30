@@ -12,4 +12,16 @@ public class ChromeTest extends CommonOps {
     public void test() throws InterruptedException {
         TestFlows.basicTest();
     }
+    @Test
+    public void test2() throws InterruptedException {
+        TestFlows.basicTest2();
+    }
+    @Test
+    public void test3() throws InterruptedException {
+        TestFlows.basicTest3();
+    }
+    @Test
+    public void test4() throws InterruptedException {
+        TestFlows.basicTest4();
+    }
 }
