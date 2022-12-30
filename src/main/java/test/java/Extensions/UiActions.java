@@ -41,4 +41,45 @@ public class UiActions extends Base {
         actions.moveToElement(elem2).click().perform();
     }
 
+    @Step("Scroll by X & Y  delta [UiActions]")
+    public static void ScrollByXYaxis(int scrollX, int scrollY)
+    {
+        actions.scrollByAmount(scrollX, scrollY)
+                .perform();
+    }
+    @Step("Scroll down by given amount (From X to Y) [UiActions]")
+    public static void ScrollDownByAmount(int amount)
+    {
+        actions.scrollByAmount(0, amount)
+                .perform();
+    }
+    @Step("Scroll up by given amount (From X to Y) [UiActions]")
+    public static void ScrollUpByAmount(int amount)
+    {
+        actions.scrollByAmount(0, amount * -1)
+                .perform();
+    }
+
+    public static void ScrollLeftByAmount(int amount)
+    {
+        actions.scrollByAmount(amount, 0)
+                .perform();
+    }
+
+    public static void ScrollRightByAmount(int amount)
+    {
+        actions.scrollByAmount(amount * -1, 0)
+                .perform();
+    }
+    @Step("Scroll to element [UiActions]")
+    public static void ScrollToElement(WebElement elem1)
+    {
+        actions.scrollToElement(elem1).perform();
+    }
+    @Step("Scroll to element [UiActions]")
+    public static void ScrollToElementWithOffset(WebElement elem1)
+    {
+        actions.scrollToElement(elem1).perform();
+    }
+
 }
