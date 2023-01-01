@@ -1,5 +1,7 @@
 package test.java.Utilities;
 
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.interactions.Actions;
 import test.java.Extensions.UiActions;
 import test.java.PageObjects.LoginPage;
@@ -9,12 +11,16 @@ import test.java.PageObjects.TopMenuBarPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+
 public class Base {
     protected static WebDriver driver;
 
     protected static UiActions action;
 
     protected static Actions actions;
+
+    protected  static Logger logger;
 
     // Page Objects
 
