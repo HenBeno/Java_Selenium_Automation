@@ -22,7 +22,9 @@ import java.time.Duration;
 
 public class CommonOps extends Base{
     @BeforeClass
-    public void setupClass(String browserType, String url) {
+    public void setupClass() {
+        String browserType="chrome";
+        String url = "https://bonigarcia.dev/selenium-webdriver-java/";
         initLog();
         initBrowser(browserType);
         initUrl(url);
@@ -37,26 +39,37 @@ public class CommonOps extends Base{
     }
 
     private void initBrowser(String browserType) {
-        WebDriverManager.chromedriver().setup();
         switch (browserType.toLowerCase()){
             case "chrome":
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 logger.info("Start Chrome Browser");
+                break;
             case "firefox":
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 logger.info("Start Firefox Browser");
+                break;
             case "edge":
+                WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 logger.info("Start Edge Browser");
+                break;
             case "explorer":
+                WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver();
                 logger.info("Start InternetExplorer Browser");
+                break;
             case "safari":
+                WebDriverManager.safaridriver().setup();
                 driver = new SafariDriver();
                 logger.info("Start Safari Browser");
+                break;
             default:
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 logger.info("Start default Browser [Chrome]");
+                break;
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
