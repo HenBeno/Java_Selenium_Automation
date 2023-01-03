@@ -2,8 +2,7 @@ package test.java.Utilities;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,12 +16,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import test.java.Extensions.UiActions;
 
+import java.io.IOException;
 import java.time.Duration;
 
 
 public class CommonOps extends Base{
     @BeforeClass
-    public void setupClass() {
+    public void setupClass() throws IOException {
         String browserType="chrome";
         String url = "https://bonigarcia.dev/selenium-webdriver-java/";
         initLog();
@@ -33,18 +33,13 @@ public class CommonOps extends Base{
         initPageObjectManager();
     }
 
-    private void initLog() {
-        logger = Logger.getLogger("MyLogger");
-        PropertyConfigurator.configure("log4j.properties");
+    private void initLog() throws IOException {
+        logger = LogManager.getLogger(Base.class);
+        System.out.println("this is logger demo.");
     }
 
     private void initBrowser(String browserType) {
         switch (browserType.toLowerCase()){
-            case "chrome":
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-                logger.info("Start Chrome Browser");
-                break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
@@ -68,6 +63,8 @@ public class CommonOps extends Base{
             default:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
+//                PageFactory.initElements((new FieldContextDecorator(new ElementContextLocatorFactory(driver))), mainPage);
+//                mainPage = PageFactory.initElements((new FieldContextDecorator(new ElementContextLocatorFactory(driver))), mainPage);
                 logger.info("Start default Browser [Chrome]");
                 break;
         }

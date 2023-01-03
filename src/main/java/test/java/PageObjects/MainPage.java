@@ -6,12 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import test.java.Utilities.Base;
+import test.java.Utilities.CommonOps;
 
 import java.util.List;
 
-public class MainPage extends Base {
+public class MainPage extends CommonOps {
 
-    WebDriver driver;
+//    WebDriver driver;
 
 //    Locators for the page title and the logout button
     @FindBy(how = How.XPATH,using ="//div[@class='card-body']/*[@href='navigation1.html']" )
