@@ -10,11 +10,22 @@ import test.java.PageObjects.*;
 
 import java.util.Properties;
 
-
+//User name: yegati8771@dewareff.com
+//Pass: Lior96
+//
+//        User name: yofigi5953@dewareff.com
+//Pass: Topaz96
 public class Base {
+    // TODO: 05-Jan-23 make external file or use some database for users list, generate more users
+    protected final static String USERNAME_1 = "yegati8771@dewareff.com"; //Lior Choen
+    protected final static String PASSWORD_1 = "Lior96";
+    protected final static String USERNAME_2 = "yofigi5953@dewareff.com"; //Topaz Kaldon
+    protected final static String PASSWORD_2 = "Topaz96";
 
-    protected final static String USERNAME = "yossidavidov346@gmail.com";
-    protected final static String PASSWORD = "yossi96";
+
+
+
+
     protected static WebDriver driver;
 
     protected static UiActions action;

@@ -1,6 +1,7 @@
 package test.java.TestFlow;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import test.java.Extensions.UiActions;
 import test.java.Extensions.Verifications;
@@ -52,10 +53,12 @@ public class TestFlows extends CommonOps {
 //    }
 
     @Step("Login in fb")
-     public static void basicTest5(String userName, String password) throws InterruptedException{
-        UiActions.UpdateText(loginPageFB.loginBtn, userName);
+     public static void fbLoginTest(String userName, String password) throws InterruptedException{
+        UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
-        Verifications.verifyTextInElement(pageAfterLogin.userName,"Yossi Davidov");
+        Verifications.verifyTextInElement(pageAfterLogin.userName,"Lior Choen");
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
     }
 }

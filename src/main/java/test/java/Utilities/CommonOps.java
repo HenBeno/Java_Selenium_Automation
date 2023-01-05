@@ -4,6 +4,7 @@ package test.java.Utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -24,7 +25,7 @@ public class CommonOps extends Base{
     @BeforeClass
     public void setupClass() throws IOException {
         String browserType="chrome";
-        String url = "https://bonigarcia.dev/selenium-webdriver-java/";
+        String url = "https://www.facebook.com/";
         initLog();
         initBrowser(browserType);
         initUrl(url);
@@ -32,6 +33,7 @@ public class CommonOps extends Base{
         initWait();
         initPageObjectManager();
     }
+
 
     private void initLog() throws IOException {
         logger = LogManager.getLogger(Base.class);
@@ -62,7 +64,10 @@ public class CommonOps extends Base{
                 break;
             default:
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                //handle chrome notifications
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-notifications");
+                driver = new ChromeDriver(options);
 //                PageFactory.initElements((new FieldContextDecorator(new ElementContextLocatorFactory(driver))), mainPage);
 //                mainPage = PageFactory.initElements((new FieldContextDecorator(new ElementContextLocatorFactory(driver))), mainPage);
                 logger.info("Start default Browser [Chrome]");
@@ -108,4 +113,7 @@ public class CommonOps extends Base{
         driver.quit();
         logger.info("Browser closed");
     }
+
+
+
 }
