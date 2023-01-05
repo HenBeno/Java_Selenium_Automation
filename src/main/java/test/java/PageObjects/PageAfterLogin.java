@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 import test.java.Extensions.UiActions;
 //
 public class PageAfterLogin {
-    @FindBy(how = How.XPATH,using ="//span[text()='Yossi Davidov']" )
+    @FindBy(how = How.XPATH,using ="//span[text()='Lior Cohen']" )
     public WebElement userName;
 
 

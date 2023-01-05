@@ -57,8 +57,8 @@ public class TestFlows extends CommonOps {
         UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
-        Verifications.verifyTextInElement(pageAfterLogin.userName,"Lior Choen");
-        Alert alert = driver.switchTo().alert();
-        alert.dismiss();
+        Verifications.verifyTextInElement(pageAfterLogin.userName,"Lior Cohen");
+
+
     }
 }
