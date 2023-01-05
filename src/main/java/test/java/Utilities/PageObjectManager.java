@@ -2,10 +2,7 @@ package test.java.Utilities;
 
 import io.selenium.utils.ElementContextLocatorFactory;
 import io.selenium.utils.FieldContextDecorator;
-import test.java.PageObjects.LoginPage;
-import test.java.PageObjects.MainPage;
-import test.java.PageObjects.ProfilePage;
-import test.java.PageObjects.TopMenuBarPage;
+import test.java.PageObjects.*;
 import org.openqa.selenium.support.PageFactory;
 
 public class PageObjectManager extends Base{
@@ -18,6 +15,10 @@ public class PageObjectManager extends Base{
 //        PageFactory.initElements(new FieldContextDecorator(new ElementContextLocatorFactory(driver)), PageObjectManager.class);
         topMenuBarPage = PageFactory.initElements(driver, TopMenuBarPage.class);
 //        PageFactory.initElements(new FieldContextDecorator(new ElementContextLocatorFactory(driver)), TopMenuBarPage.class);
+        loginPageFB = PageFactory.initElements(driver, LoginPageFB.class);
+        pageAfterLogin = PageFactory.initElements(driver, PageAfterLogin.class);
+
+    }
     }
 
-}
+

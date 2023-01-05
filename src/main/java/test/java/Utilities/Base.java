@@ -6,15 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.java.Extensions.UiActions;
-import test.java.PageObjects.LoginPage;
-import test.java.PageObjects.MainPage;
-import test.java.PageObjects.ProfilePage;
-import test.java.PageObjects.TopMenuBarPage;
+import test.java.PageObjects.*;
 
 import java.util.Properties;
 
 
 public class Base {
+
+    protected final static String USERNAME = "yossidavidov346@gmail.com";
+    protected final static String PASSWORD = "yossi96";
     protected static WebDriver driver;
 
     protected static UiActions action;
@@ -29,7 +29,7 @@ public class Base {
 
     // Page Objects
 
-    protected  static WebDriverWait wait;
+    protected static WebDriverWait wait;
 
     protected static MainPage mainPage;
 
@@ -38,6 +38,7 @@ public class Base {
     protected static ProfilePage profilePage;
 
     protected static TopMenuBarPage topMenuBarPage;
-
+    protected static LoginPageFB loginPageFB;
+    protected static PageAfterLogin pageAfterLogin;
 
 }

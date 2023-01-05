@@ -43,9 +43,19 @@ public class TestFlows extends CommonOps {
         Verifications.verifyVisibilityOfElement(mainPage.gitSmallLogo);
     }
 
+
+
 //    @Step("Verify page down elements")
 //    public static void basicTest2() throws InterruptedException {
 //        UiActions.ScrollDownByAmount(400);
 //        Verifications.verifyVisibilityOfElement();
 //    }
+
+    @Step("Login in fb")
+     public static void basicTest5(String userName, String password) throws InterruptedException{
+        UiActions.UpdateText(loginPageFB.loginBtn, userName);
+        UiActions.UpdateText(loginPageFB.passwordInput, password);
+        UiActions.click(loginPageFB.loginBtn);
+        Verifications.verifyTextInElement(pageAfterLogin.userName,"Yossi Davidov");
+    }
 }
