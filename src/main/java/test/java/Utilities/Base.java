@@ -48,6 +48,6 @@ public class Base {
 
     protected static TopMenuBarPage topMenuBarPage;
     protected static LoginPageFB loginPageFB;
-    protected static PageAfterLogin pageAfterLogin;
+    protected static FBMainPage FBMainPage;
 
 }

@@ -29,7 +29,7 @@ public class Verifications extends CommonOps {
     public static void verifyTextInElement(WebElement elem,String expected){
         wait.until(ExpectedConditions.visibilityOf(elem));
         assertEquals(elem.getText(),expected) ;
-        System.out.println(elem.getText()+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(elem.getText());
     }
 
     @Step("Verify text in element")

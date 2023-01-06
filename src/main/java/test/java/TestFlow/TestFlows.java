@@ -52,13 +52,10 @@ public class TestFlows extends CommonOps {
 //        Verifications.verifyVisibilityOfElement();
 //    }
 
-    @Step("Login in fb")
+    @Step("Login to FB")
      public static void fbLoginTest(String userName, String password) throws InterruptedException{
         UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
-        Verifications.verifyTextInElement(pageAfterLogin.userName,"Lior Cohen");
-
-
     }
 }

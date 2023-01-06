@@ -1,6 +1,7 @@
 package TestCase;
 
 import io.qameta.allure.Step;
+import test.java.Extensions.Verifications;
 import test.java.TestFlow.TestFlows;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -28,9 +29,10 @@ public class ChromeTest extends CommonOps {
 //    }
 
     @Test
-    @Step("check that was login was successfull")
+    @Step("Verify the login successfully done [Check user name]")
     public void test5() throws InterruptedException {
         TestFlows.fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        Verifications.verifyTextInElement(FBMainPage.userName,"Lior Cohen");
     }
 
 }
