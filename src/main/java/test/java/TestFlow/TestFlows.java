@@ -1,10 +1,9 @@
 package test.java.TestFlow;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import test.java.Extensions.UiActions;
 import test.java.Extensions.Verifications;
+import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 
 public class TestFlows extends CommonOps {
@@ -57,5 +56,29 @@ public class TestFlows extends CommonOps {
         UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
+    }
+
+    @Step("Verify home page")
+    public static String fbHomePage(String userName, String password) throws InterruptedException{
+        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        UiActions.click(fbTopMenu.homeBtn);
+        System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
+        return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
+    }
+
+    @Step("Verify friends page")
+    public static String fbFriendsPage(String userName, String password) throws InterruptedException{
+        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        UiActions.click(fbTopMenu.friendsBtn);
+        System.out.println(UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current"));
+        return UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current");
+    }
+
+    @Step("Verify groups page")
+    public static String fbGroupsPage(String userName, String password) throws InterruptedException{
+        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        UiActions.click(fbTopMenu.groupsBtn);
+        System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
+        return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
     }
 }

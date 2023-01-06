@@ -14,6 +14,8 @@ public class UiActions extends Base {
     {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(elem));
+            System.out.println("click on: '" + getText(elem) + "' Button");
+            logger.error("click on: '" + getText(elem) + "' Button");
             elem.click();
         }
         catch (Exception e){
@@ -27,7 +29,7 @@ public class UiActions extends Base {
     @Step("Get text from element [UiActions]")
     public static String getText(WebElement elem)
     {
-        wait.until(ExpectedConditions.elementToBeClickable(elem));
+        wait.until(ExpectedConditions.visibilityOf(elem));
         return elem.getText();
     }
 
@@ -112,6 +114,13 @@ public class UiActions extends Base {
     public static void ScrollToElement(WebElement elem1)
     {
         actions.scrollToElement(elem1).perform();
+    }
+
+    @Step("Get element attribute [UiActions]")
+    public static String GetElementAttribute(WebElement elem1, String attribute)
+    {
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(elem1, attribute));
+        return elem1.getAttribute(attribute);
     }
 
 }

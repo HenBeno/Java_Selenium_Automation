@@ -14,7 +14,8 @@ public class PageObjectManager extends Base{
         topMenuBarPage = PageFactory.initElements(driver, TopMenuBarPage.class);
 //        PageFactory.initElements(new FieldContextDecorator(new ElementContextLocatorFactory(driver)), TopMenuBarPage.class);
         loginPageFB = PageFactory.initElements(driver, LoginPageFB.class);
-        FBMainPage = PageFactory.initElements(driver, FBMainPage.class);
+        fbMainPage = PageFactory.initElements(driver, FBMainPage.class);
+        fbTopMenu = PageFactory.initElements(driver, FBTopMenu.class);
 
     }
     }

@@ -37,4 +37,9 @@ public class Verifications extends CommonOps {
         wait.until(ExpectedConditions.visibilityOf(elem));
     }
 
+    @Step("Verify by strings comparing ")
+    public static void verifyStrings(String actual, String expected) {
+        assertEquals(actual, expected);
+    }
+
 }

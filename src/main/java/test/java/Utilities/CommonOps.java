@@ -22,7 +22,7 @@ import java.time.Duration;
 
 
 public class CommonOps extends Base{
-    @BeforeClass
+    @BeforeMethod
     public void setupClass() throws IOException {
         String browserType="chrome";
         String url = "https://www.facebook.com/";
@@ -90,7 +90,7 @@ public class CommonOps extends Base{
     }
 
     private void initWait() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         logger.info("Initialized 'wait'");
     }
 
@@ -99,15 +99,15 @@ public class CommonOps extends Base{
         logger.info("Initialized POM");
     }
 
-    @BeforeMethod
-    public void setupDriver() {
-    }
+//    @BeforeMethod
+//    public void setupDriver() {
+//    }
+//
+//    @AfterMethod
+//    public void tearDownMethod() throws InterruptedException {
+//    }
 
     @AfterMethod
-    public void tearDownMethod() throws InterruptedException {
-    }
-
-    @AfterClass
     public void tearDown() throws InterruptedException {
         Thread.sleep(5000);
         driver.quit();

@@ -30,9 +30,27 @@ public class ChromeTest extends CommonOps {
 
     @Test
     @Step("Verify the login successfully done [Check user name]")
-    public void test5() throws InterruptedException {
+    public void test1() throws InterruptedException {
         TestFlows.fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
-        Verifications.verifyTextInElement(FBMainPage.userName,"Lior Cohen");
+        Verifications.verifyTextInElement(fbMainPage.userName,"Lior Cohen");
+    }
+
+    @Test
+    @Step("Verify the movement to home page throw top menu")
+    public void test2() throws InterruptedException {
+        Verifications.verifyStrings(TestFlows.fbHomePage(Base.USERNAME_1,Base.PASSWORD_1), "page");
+    }
+
+    @Test
+    @Step("Verify the movement to friends page using the top menu")
+    public void test3() throws InterruptedException {
+        Verifications.verifyStrings(TestFlows.fbFriendsPage(Base.USERNAME_1,Base.PASSWORD_1), "page");
+    }
+
+    @Test
+    @Step("Verify the movement to groups page using the top menu")
+    public void test4() throws InterruptedException {
+        Verifications.verifyStrings(TestFlows.fbGroupsPage(Base.USERNAME_1,Base.PASSWORD_1), "page");
     }
 
 }
