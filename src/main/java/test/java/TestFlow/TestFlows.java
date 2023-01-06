@@ -81,4 +81,28 @@ public class TestFlows extends CommonOps {
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
     }
+
+    @Step("Verify mouse hover popup in Friends page")
+    public static String mouseHoverFriends(String userName, String password) throws InterruptedException{
+        fbFriendsPage(userName, password);
+        UiActions.MouseHover(fbTopMenu.friendsBtn);
+        return UiActions.getText(fbTopMenu.mouseHoverFriendsBtn);
+    }
+
+    @Step("Verify mouse hover popup in Groups page")
+    public static String mouseHoverGroups(String userName, String password) throws InterruptedException{
+        fbGroupsPage(userName, password);
+        UiActions.MouseHover(fbTopMenu.groupsBtn);
+        return UiActions.getText(fbTopMenu.mouseHoverGroupsBtn);
+    }
+
+    @Step("Verify mouse hover popup in Home page")
+    public static String mouseHoverHome(String userName, String password) throws InterruptedException{
+        fbHomePage(userName, password);
+        // The first one is because after click on the home button we need to "move the mose" to different element
+        // and then go back to home element to the move hover element appear again.
+        UiActions.MouseHover(fbTopMenu.groupsBtn);
+        UiActions.MouseHover(fbTopMenu.homeBtn);
+        return UiActions.getText(fbTopMenu.mouseHoverHomeBtn);
+    }
 }

@@ -53,4 +53,22 @@ public class ChromeTest extends CommonOps {
         Verifications.verifyStrings(TestFlows.fbGroupsPage(Base.USERNAME_1,Base.PASSWORD_1), "page");
     }
 
+    @Test
+    @Step("Verify the mouse hover span appearance [Home] from the top menu")
+    public void test5() throws InterruptedException {
+        Verifications.verifyStrings(TestFlows.mouseHoverHome(Base.USERNAME_1,Base.PASSWORD_1), "Home");
+    }
+
+    @Test
+    @Step("Verify the mouse hover span appearance [friends] from the top menu")
+    public void test6() throws InterruptedException {
+        Verifications.verifyStrings(TestFlows.mouseHoverFriends(Base.USERNAME_1,Base.PASSWORD_1), "Friends");
+    }
+
+    @Test
+    @Step("Verify the mouse hover span appearance [groups] from the top menu")
+    public void test7() throws InterruptedException {
+        Verifications.verifyStrings(TestFlows.mouseHoverGroups(Base.USERNAME_1,Base.PASSWORD_1), "Groups");
+    }
+
 }

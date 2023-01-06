@@ -71,10 +71,17 @@ public class UiActions extends Base {
     }
 
     @Step("Mouse hover element and click [UiActions]")
-    public static void MouseHover(WebElement elem1, WebElement elem2)
+    public static void MouseHoverAndClick(WebElement elem1, WebElement elem2)
     {
         actions.moveToElement(elem1).perform();
         actions.moveToElement(elem2).click().perform();
+    }
+
+    @Step("Mouse hover")
+    public static void MouseHover(WebElement elem1)
+    {
+        wait.until(ExpectedConditions.visibilityOf(elem1));
+        actions.moveToElement(elem1).perform();
     }
 
     @Step("Scroll by X & Y  delta [UiActions]")

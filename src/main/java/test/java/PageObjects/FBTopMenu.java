@@ -13,4 +13,14 @@ public class FBTopMenu {
 
     @FindBy(how = How.XPATH,using ="//div[@role='banner']//a[@aria-label='Groups']" )
     public WebElement groupsBtn;
+
+    @FindBy(how = How.XPATH,using ="//span[contains(text(),'Home')]" )
+    public WebElement mouseHoverHomeBtn;
+
+    @FindBy(how = How.XPATH,using ="//span[contains(text(),'Friends')]" )
+    public WebElement mouseHoverFriendsBtn;
+
+    @FindBy(how = How.XPATH,using ="//span[contains(text(),'Groups')]" )
+    public WebElement mouseHoverGroupsBtn;
+
 }
