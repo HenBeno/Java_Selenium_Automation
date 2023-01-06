@@ -20,12 +20,14 @@ import test.java.Extensions.UiActions;
 import java.io.IOException;
 import java.time.Duration;
 
+import static test.java.Utilities.GetDataFromXml.getDataFromXml;
+
 
 public class CommonOps extends Base{
     @BeforeMethod
-    public void setupClass() throws IOException {
-        String browserType="chrome";
-        String url = "https://www.facebook.com/";
+    public void setupClass() throws Exception {
+        String browserType = getDataFromXml("Config", "browser");
+        String url = getDataFromXml("Config", "url");
         initLog();
         initBrowser(browserType);
         initUrl(url);

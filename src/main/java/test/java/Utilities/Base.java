@@ -10,6 +10,8 @@ import test.java.PageObjects.*;
 
 import java.util.Properties;
 
+import static test.java.Utilities.GetDataFromXml.getDataFromXml;
+
 //User name: yegati8771@dewareff.com
 //Pass: Lior96
 //
@@ -17,10 +19,45 @@ import java.util.Properties;
 //Pass: Topaz96
 public class Base {
     // TODO: 05-Jan-23 make external file or use some database for users list, generate more users
-    protected final static String USERNAME_1 = "yegati8771@dewareff.com"; //Lior Cohen
-    protected final static String PASSWORD_1 = "Lior96";
-    protected final static String USERNAME_2 = "yofigi5953@dewareff.com"; //Topaz Kaldon
-    protected final static String PASSWORD_2 = "Topaz96";
+    protected static String username1;
+
+    static {
+        try {
+            username1 = getDataFromXml("Data", "userName1");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected static String password1;
+
+    static {
+        try {
+            password1 = getDataFromXml("Data", "password1");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected static String username2;
+
+    static {
+        try {
+            username2 = getDataFromXml("Data", "userName2");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected static String password2;
+
+    static {
+        try {
+            password2 = getDataFromXml("Data", "password1");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     // TODO: 05-Jan-23 Delete extra classes and rename Classes  
@@ -40,11 +77,6 @@ public class Base {
 
     protected static WebDriverWait wait;
 
-    protected static MainPage mainPage;
-
-    protected static LoginPage loginPage;
-
-    protected static ProfilePage profilePage;
 
     protected static TopMenuBarPage topMenuBarPage;
     protected static LoginPageFB loginPageFB;

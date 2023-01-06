@@ -2,7 +2,6 @@ package test.java.TestFlow;
 
 import io.qameta.allure.Step;
 import test.java.Extensions.UiActions;
-import test.java.Extensions.Verifications;
 import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 
@@ -25,7 +24,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify home page")
     public static String fbHomePage(String userName, String password) throws InterruptedException{
-        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        fbLoginTest(Base.username1,Base.password1);
         UiActions.click(fbTopMenu.homeBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
@@ -33,7 +32,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify friends page")
     public static String fbFriendsPage(String userName, String password) throws InterruptedException{
-        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        fbLoginTest(Base.username1,Base.password1);
         UiActions.click(fbTopMenu.friendsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current");
@@ -41,7 +40,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify groups page")
     public static String fbGroupsPage(String userName, String password) throws InterruptedException{
-        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+        fbLoginTest(Base.username1,Base.password1);
         UiActions.click(fbTopMenu.groupsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
