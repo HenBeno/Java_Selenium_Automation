@@ -23,4 +23,8 @@ public class FBTopMenu {
     @FindBy(how = How.XPATH,using ="//span[contains(text(),'Groups')]" )
     public WebElement mouseHoverGroupsBtn;
 
+    @FindBy(how = How.XPATH,using ="//input[@type='search'][@placeholder='Search Facebook']" )
+    public WebElement searchbarInput;
+    //input[@type='search'][@placeholder='Search Facebook']
+
 }

@@ -32,7 +32,7 @@ public class ChromeTest extends CommonOps {
     @Step("Verify the login successfully done [Check user name]")
     public void test1() throws InterruptedException {
         TestFlows.fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
-        Verifications.verifyTextInElement(fbMainPage.userName,"Lior Cohen");
+        Verifications.verifyTextInElement(fbLeftMenu.userName,"Lior Cohen");
     }
 
     @Test
@@ -70,5 +70,6 @@ public class ChromeTest extends CommonOps {
     public void test7() throws InterruptedException {
         Verifications.verifyStrings(TestFlows.mouseHoverGroups(Base.USERNAME_1,Base.PASSWORD_1), "Groups");
     }
+
 
 }

@@ -58,6 +58,19 @@ public class TestFlows extends CommonOps {
         UiActions.click(loginPageFB.loginBtn);
     }
 
+
+//    @Step("upload cover photo")
+//    public static void uploadCoverPhoto() throws InterruptedException {
+//        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
+//        UiActions.click(fbLeftMenu.userName);
+//        UiActions.click(fbUserPage.addCoverPhotoBtn);
+//        UiActions.UpdateText(fbUserPage.uploadImageBtn,"C:\\Users\\jondi\\Downloads\\girl.jpg");
+//        UiActions.click(fbUserPage.saveChangesBtn);
+//    }
+
+
+
+
     @Step("Verify home page")
     public static String fbHomePage(String userName, String password) throws InterruptedException{
         fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
