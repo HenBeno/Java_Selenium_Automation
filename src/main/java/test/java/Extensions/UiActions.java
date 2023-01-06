@@ -38,11 +38,11 @@ public class UiActions extends Base {
             wait.until(ExpectedConditions.visibilityOf(elem));
             elem.clear();
             elem.sendKeys(text);
-            System.out.println("Text: " + text + " inserted successfully into" + getText(elem));
+            System.out.println("Text: " + text + " inserted successfully");
         }
         catch (Exception e){
-            System.out.println("Text: " + text + " fail to inserted into" + getText(elem));
-            logger.error("Text: " + text + " fail to inserted into" + getText(elem));
+            System.out.println("Text: " + text + " fail to inserted");
+            logger.error("Text: " + text + " fail to inserted into");
         }
 
     }
@@ -54,16 +54,17 @@ public class UiActions extends Base {
             wait.until(ExpectedConditions.visibilityOf(elem));
         }
         catch (Exception e) {
-            System.out.println("Error: Failed to find drop menu: " + getText(elem) + " , see details: " + e);
-            logger.error("Error: Failed to find drop menu: " + getText(elem) + " , see details: " + e);
+            System.out.println("Error: Failed to find drop menu, see details: " + e);
+            logger.error("Error: Failed to find drop menu, see details: " + e);
         }
         try {
             Select dropdown = new Select(elem);
             dropdown.selectByVisibleText(text);
+            System.out.println("Text: " + text + " chosen successfully from drop menu");
         }
         catch (Exception e){
-            System.out.println("Error: Failed to find drop menu selection: " + getText(elem) + " , see details: " + e);
-            logger.error("Error: Failed to find drop menu selection: " + getText(elem) + " , see details: " + e);
+            System.out.println("Error: Failed to find drop menu selection: " + text + " , see details: " + e);
+            logger.error("Error: Failed to find drop menu selection: " + text + " , see details: " + e);
         }
     }
 
