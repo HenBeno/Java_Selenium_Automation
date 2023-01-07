@@ -1,16 +1,17 @@
 package test.java.TestFlow;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import test.java.Extensions.UiActions;
-import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
     @Step("Login to FB")
-     public static void fbLoginTest(String userName, String password) throws Exception {
+     public static WebElement fbLoginTest(String userName, String password) throws Exception {
         loginPageFB.login(userName, password);
+        return fbLeftMenu.userName;
     }
 
 //    @Step("upload cover photo")

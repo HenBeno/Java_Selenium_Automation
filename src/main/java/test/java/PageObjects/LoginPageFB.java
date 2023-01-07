@@ -13,11 +13,10 @@ public class LoginPageFB {
     @FindBy(how = How.XPATH,using ="//button[@name='login']" )
     private static WebElement loginBtn;
 
-    public FBMainPage login(String userName, String password){
+    public void login(String userName, String password){
         UiActions.UpdateText(loginInput, userName);
         UiActions.UpdateText(passwordInput, password);
         UiActions.click(loginBtn);
-        return new FBMainPage();
     }
 
 

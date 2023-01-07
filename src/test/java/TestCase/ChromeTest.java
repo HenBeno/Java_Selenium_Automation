@@ -16,8 +16,12 @@ public class ChromeTest extends CommonOps {
     @Test
     @Step("Verify the login successfully done [Check user name]")
     public void test1() throws Exception {
-        TestFlows.fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
-        Verifications.verifyTextInElement(fbLeftMenu.userName,getDataFromXml("Data","expectedResult1"));
+        System.out.println(fbLeftMenu.userName);
+        Verifications.verifyTextInElement(
+                TestFlows.fbLoginTest(
+                        getDataFromXml("Data", "userName1"),
+                        getDataFromXml("Data", "password1")
+                ), getDataFromXml("Data","expectedResult1"));
     }
 
     @Test
