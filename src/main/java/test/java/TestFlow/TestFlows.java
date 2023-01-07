@@ -26,7 +26,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify home page")
     public static String fbHomePage() throws Exception {
-        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.homeBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
@@ -34,7 +34,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify friends page")
     public static String fbFriendsPage() throws Exception {
-        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.friendsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current");
@@ -42,7 +42,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify groups page")
     public static String fbGroupsPage() throws Exception {
-        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.groupsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
@@ -74,7 +74,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Create new post")
     public static String createNewPost() throws Exception {
-        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
         Thread.sleep(1000);
         UiActions.click(fbLeftMenu.userName);
         Thread.sleep(2000);
