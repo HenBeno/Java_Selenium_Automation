@@ -5,6 +5,8 @@ import test.java.Extensions.UiActions;
 import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 
+import static test.java.Utilities.GetDataFromXml.getDataFromXml;
+
 public class TestFlows extends CommonOps {
     @Step("Login to FB")
      public static void fbLoginTest(String userName, String password) throws InterruptedException{
@@ -23,46 +25,46 @@ public class TestFlows extends CommonOps {
 //    }
 
     @Step("Verify home page")
-    public static String fbHomePage(String userName, String password) throws InterruptedException{
-        fbLoginTest(Base.username1,Base.password1);
+    public static String fbHomePage() throws Exception {
+        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
         UiActions.click(fbTopMenu.homeBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
     }
 
     @Step("Verify friends page")
-    public static String fbFriendsPage(String userName, String password) throws InterruptedException{
-        fbLoginTest(Base.username1,Base.password1);
+    public static String fbFriendsPage() throws Exception {
+        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
         UiActions.click(fbTopMenu.friendsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current");
     }
 
     @Step("Verify groups page")
-    public static String fbGroupsPage(String userName, String password) throws InterruptedException{
-        fbLoginTest(Base.username1,Base.password1);
+    public static String fbGroupsPage() throws Exception {
+        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
         UiActions.click(fbTopMenu.groupsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
     }
 
     @Step("Verify mouse hover popup in Friends page")
-    public static String mouseHoverFriends(String userName, String password) throws InterruptedException{
-        fbFriendsPage(userName, password);
+    public static String mouseHoverFriends() throws Exception {
+        fbFriendsPage();
         UiActions.MouseHover(fbTopMenu.friendsBtn);
         return UiActions.getText(fbTopMenu.mouseHoverFriendsBtn);
     }
 
     @Step("Verify mouse hover popup in Groups page")
-    public static String mouseHoverGroups(String userName, String password) throws InterruptedException{
-        fbGroupsPage(userName, password);
+    public static String mouseHoverGroups() throws Exception {
+        fbGroupsPage();
         UiActions.MouseHover(fbTopMenu.groupsBtn);
         return UiActions.getText(fbTopMenu.mouseHoverGroupsBtn);
     }
 
     @Step("Verify mouse hover popup in Home page")
-    public static String mouseHoverHome(String userName, String password) throws InterruptedException{
-        fbHomePage(userName, password);
+    public static String mouseHoverHome() throws Exception {
+        fbHomePage();
         // The first one is because after click on the home button we need to "move the mose" to different element
         // and then go back to home element to the move hover element appear again.
         UiActions.MouseHover(fbTopMenu.groupsBtn);
@@ -71,8 +73,8 @@ public class TestFlows extends CommonOps {
     }
 
     @Step("Create new post")
-    public static String createNewPost(String userName, String password) throws InterruptedException{
-        fbLoginTest(userName, password);
+    public static String createNewPost() throws Exception {
+        fbLoginTest(getDataFromXml("Config", "username1"),getDataFromXml("Config", "password1"));
         Thread.sleep(1000);
         UiActions.click(fbLeftMenu.userName);
         Thread.sleep(2000);

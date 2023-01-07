@@ -4,4 +4,31 @@
     <userName2>yofigi5953@dewareff.com</userName2>
     <password2>Topaz96</password2>
     <newPostVerify>Hey Hey Hey</newPostVerify>
+
+    # Common for tests 2/3/4
+    <mouseHover>page</mouseHover>
+
+    # Test 1
+    <expectedResult1>Lior Cohen</expectedResult1>
+
+    # Test 2 - Place Holder
+    <expectedResult2>None</expectedResult2>
+
+    # Test 3 - Place Holder
+    <expectedResult3>None</expectedResult3>
+
+    # Test 4 - Place Holder
+    <expectedResult4>None</expectedResult4>
+
+    # Test 5
+    <expectedResult5>Home</expectedResult5>
+
+    # Test 6
+    <expectedResult6>Friends</expectedResult6>
+
+    # Test 7
+    <expectedResult7>Groups</expectedResult7>
+
+    # Test 8
+    <expectedResult8>Hey Hey Hey</expectedResult8>
 </testData>
