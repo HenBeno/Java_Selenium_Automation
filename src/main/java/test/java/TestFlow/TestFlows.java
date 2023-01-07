@@ -9,10 +9,8 @@ import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
     @Step("Login to FB")
-     public static void fbLoginTest(String userName, String password) throws InterruptedException{
-        UiActions.UpdateText(loginPageFB.loginInput, userName);
-        UiActions.UpdateText(loginPageFB.passwordInput, password);
-        UiActions.click(loginPageFB.loginBtn);
+     public static void fbLoginTest(String userName, String password) throws Exception {
+        loginPageFB.login(userName, password);
     }
 
 //    @Step("upload cover photo")

@@ -25,7 +25,7 @@ import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class CommonOps extends Base{
     @BeforeMethod
-    public void setupClass() throws Exception {
+    protected void setupClass() throws Exception {
         String browserType = getDataFromXml("Config", "browser");
         String url = getDataFromXml("Config", "url");
         initLog();
@@ -82,7 +82,7 @@ public class CommonOps extends Base{
 
     private void initUrl(String url) {
         driver.get(url);
-        logger.info("Open URL");
+        logger.info("Open URL: " + url);
     }
 
     private void initAction() {
@@ -110,7 +110,7 @@ public class CommonOps extends Base{
 //    }
 
     @AfterMethod
-    public void tearDown() throws InterruptedException {
+    protected void tearDown() throws InterruptedException {
         Thread.sleep(5000);
         driver.quit();
         logger.info("Browser closed");

@@ -7,12 +7,18 @@ import test.java.Extensions.UiActions;
 //
 public class LoginPageFB {
     @FindBy(how = How.XPATH,using ="//input[@id='email']" )
-    public WebElement loginInput;
+    private static WebElement loginInput;
     @FindBy(how = How.XPATH,using ="//input[@id='pass']" )
-    public WebElement passwordInput;
+    private static WebElement passwordInput;
     @FindBy(how = How.XPATH,using ="//button[@name='login']" )
-    public WebElement loginBtn;
+    private static WebElement loginBtn;
 
+    public FBMainPage login(String userName, String password){
+        UiActions.UpdateText(loginInput, userName);
+        UiActions.UpdateText(passwordInput, password);
+        UiActions.click(loginBtn);
+        return new FBMainPage();
+    }
 
 
 
