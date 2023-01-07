@@ -11,6 +11,7 @@ public class PageObjectManager extends Base {
         fbTopMenu = PageFactory.initElements(driver, FBTopMenu.class);
         fbLeftMenu = PageFactory.initElements(driver, FBLeftMenu.class);
         fbUserPage = PageFactory.initElements(driver, FBUserPage.class);
+        fbProfilePage = PageFactory.initElements(driver, FBProfilePage.class);
 
     }
 }

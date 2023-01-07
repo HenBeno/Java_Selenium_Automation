@@ -69,4 +69,21 @@ public class TestFlows extends CommonOps {
         UiActions.MouseHover(fbTopMenu.homeBtn);
         return UiActions.getText(fbTopMenu.mouseHoverHomeBtn);
     }
+
+    @Step("Create new post")
+    public static String createNewPost(String userName, String password) throws InterruptedException{
+        fbLoginTest(userName, password);
+        Thread.sleep(1000);
+        UiActions.click(fbLeftMenu.userName);
+        Thread.sleep(2000);
+        UiActions.click(fbProfilePage.clickToOpenTextAreaNewPosts);
+        Thread.sleep(2000);
+        UiActions.click(fbProfilePage.textAreaNewPosts);
+        Thread.sleep(2000);
+        UiActions.UpdateText(fbProfilePage.textAreaNewPosts, "Hey Hey Hey");
+        Thread.sleep(2000);
+        UiActions.click(fbProfilePage.senNewPostBtn);
+        Thread.sleep(2000);
+        return UiActions.getText(fbProfilePage.postsTextList.get(0));
+    }
 }

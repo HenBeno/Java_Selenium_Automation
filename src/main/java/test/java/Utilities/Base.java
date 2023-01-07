@@ -62,27 +62,21 @@ public class Base {
 
     // TODO: 05-Jan-23 Delete extra classes and rename Classes  
     protected static WebDriver driver;
-
     protected static UiActions action;
-
     protected static Actions actions;
 
     protected static Logger logger;
-
     protected static String LOG_FILE;
-
     protected static Properties properties;
-
-    // Page Objects
-
     protected static WebDriverWait wait;
 
 
-    protected static TopMenuBarPage topMenuBarPage;
+    // Page Objects
     protected static LoginPageFB loginPageFB;
     protected static FBMainPage fbMainPage;
     protected static FBTopMenu fbTopMenu;
     protected static FBLeftMenu fbLeftMenu;
     protected static FBUserPage fbUserPage;
+    protected static FBProfilePage fbProfilePage;
 
 }

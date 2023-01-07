@@ -56,4 +56,10 @@ public class ChromeTest extends CommonOps {
         Verifications.verifyStrings(TestFlows.mouseHoverGroups(Base.username1,Base.password1), "Groups");
     }
 
+    @Test
+    @Step("Verify create new post and verify by post text")
+    public void test8() throws Exception {
+        Verifications.verifyStrings(TestFlows.createNewPost(Base.username1,Base.password1), getDataFromXml("Data", "newPostVerify"));
+    }
+
 }
