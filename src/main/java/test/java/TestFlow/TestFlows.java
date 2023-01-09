@@ -1,27 +1,24 @@
 package test.java.TestFlow;
 
 import io.qameta.allure.Step;
+import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
-import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
-
-import java.io.IOException;
 
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
     @Step("Login to FB")
-     public static void fbLoginTest(String userName, String password) throws InterruptedException{
+    public static void fbLoginTest(String userName, String password) throws InterruptedException {
         UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
     }
 
 
-
     @Step("Verify home page")
     public static String fbHomePage() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.homeBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
@@ -29,7 +26,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify friends page")
     public static String fbFriendsPage() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.friendsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current");
@@ -37,7 +34,7 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify groups page")
     public static String fbGroupsPage() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.groupsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
@@ -69,32 +66,44 @@ public class TestFlows extends CommonOps {
 
     @Step("Create new post")
     public static String createNewPost() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         Thread.sleep(1000);
         UiActions.click(fbLeftMenu.userName);
         Thread.sleep(2000);
-        UiActions.click(fbProfilePage.clickToOpenTextAreaNewPosts);
+        UiActions.click(fbProfilePage.getClickToOpenTextAreaNewPosts());
         Thread.sleep(2000);
-        UiActions.click(fbProfilePage.textAreaNewPosts);
+        UiActions.click(fbProfilePage.getTextAreaNewPosts());
         Thread.sleep(2000);
-        UiActions.UpdateText(fbProfilePage.textAreaNewPosts, "Hey Hey Hey");
+        UiActions.UpdateText(fbProfilePage.getTextAreaNewPosts(), "Hey Hey Hey");
         Thread.sleep(2000);
-        UiActions.click(fbProfilePage.senNewPostBtn);
+        UiActions.click(fbProfilePage.getSenNewPostBtn());
         Thread.sleep(2000);
-        return UiActions.getText(fbProfilePage.postsTextList.get(0));
+        return UiActions.getText(fbProfilePage.getPostsTextList().get(0));
     }
+
     //    ControlFocus(Open,,Edit1)
 //    ControlSetText(Open,,Edit1,DSaedAutomationJava_Selenium_AutomationsrcmainjavatestjavaExternal filesgirl.png)
 //    ControlClick(Open,,Button1)
     @Step("upload cover photo")
-    public static void uploadCoverPhoto() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+    public static SoftAssert uploadCoverPhoto() throws Exception {
+        softAssert = new SoftAssert();
+        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbLeftMenu.userName);
-        UiActions.click(fbProfilePage.updateProfilePicture);
-        UiActions.click(fbProfilePage.uploadProfilePictureBtn);
-        Thread.sleep(3000);
+        UiActions.click(fbProfilePage.getUpdateProfilePicture());
+        UiActions.click(fbProfilePage.getUploadProfilePictureBtn());
+        Thread.sleep(1000);
         Runtime.getRuntime().exec("src/main/java/test/java/External_files/uploadPicture.exe");
-        UiActions.click(fbProfilePage.saveProfilePhoto);
+        UiActions.click(fbProfilePage.getSaveProfilePhoto());
+        UiActions.waitToInvisibility(fbProfilePage.getSaveProfilePhoto());
+
+        driver.navigate().refresh();
+
+        softAssert.assertEquals(UiActions.getText(fbProfilePage.getPictureUpdateTime()), getDataFromXml("Data", "expectedResult9.1"));
+        String cut_name = UiActions.getText(fbProfilePage.getUptdatedHisProfilePhotTxt());
+        softAssert.assertEquals(cut_name.substring(cut_name.length() - 29), getDataFromXml("Data", "expectedResult9.2"));
+
+        return softAssert;
+
     }
 
 }

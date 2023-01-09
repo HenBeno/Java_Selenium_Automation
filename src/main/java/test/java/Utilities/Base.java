@@ -5,6 +5,7 @@ import org.apache.logging.log4j.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
 import test.java.PageObjects.*;
 
@@ -35,5 +36,8 @@ public class Base {
     protected static FBLeftMenu fbLeftMenu;
 
     protected static FBProfilePage fbProfilePage;
+
+
+    protected static SoftAssert softAssert;
 
 }

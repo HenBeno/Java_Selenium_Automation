@@ -92,7 +92,7 @@ public class CommonOps extends Base{
     }
 
     private void initWait() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         logger.info("Initialized 'wait'");
     }
 

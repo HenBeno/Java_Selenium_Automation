@@ -64,7 +64,7 @@ public class ChromeTest extends CommonOps {
     @Test
     @Step("Verify that profile picture has been uploaded successfully")
     public void test9() throws Exception {
-        TestFlows.uploadCoverPhoto();
+        TestFlows.uploadCoverPhoto().assertAll();
     }
 
 }
