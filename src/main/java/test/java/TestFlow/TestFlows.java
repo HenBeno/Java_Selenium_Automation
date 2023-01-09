@@ -93,7 +93,7 @@ public class TestFlows extends CommonOps {
         UiActions.click(fbProfilePage.updateProfilePicture);
         UiActions.click(fbProfilePage.uploadProfilePictureBtn);
         Thread.sleep(3000);
-        Runtime.getRuntime().exec("D:\\SaedAutomation\\Java_Selenium_Automation\\src\\main\\java\\test\\java\\External files\\uploadPicture.exe");
+        Runtime.getRuntime().exec("src/main/java/test/java/External_files/uploadPicture.exe");
         UiActions.click(fbProfilePage.saveProfilePhoto);
     }
 
