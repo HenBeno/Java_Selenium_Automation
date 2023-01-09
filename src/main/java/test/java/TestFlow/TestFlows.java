@@ -5,6 +5,8 @@ import test.java.Extensions.UiActions;
 import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 
+import java.io.IOException;
+
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
@@ -15,14 +17,7 @@ public class TestFlows extends CommonOps {
         UiActions.click(loginPageFB.loginBtn);
     }
 
-//    @Step("upload cover photo")
-//    public static void uploadCoverPhoto() throws InterruptedException {
-//        fbLoginTest(Base.USERNAME_1,Base.PASSWORD_1);
-//        UiActions.click(fbLeftMenu.userName);
-//        UiActions.click(fbUserPage.addCoverPhotoBtn);
-//        UiActions.UpdateText(fbUserPage.uploadImageBtn,"C:\\Users\\jondi\\Downloads\\girl.jpg");
-//        UiActions.click(fbUserPage.saveChangesBtn);
-//    }
+
 
     @Step("Verify home page")
     public static String fbHomePage() throws Exception {
@@ -88,4 +83,19 @@ public class TestFlows extends CommonOps {
         Thread.sleep(2000);
         return UiActions.getText(fbProfilePage.postsTextList.get(0));
     }
+    //    ControlFocus(Open,,Edit1)
+//    ControlSetText(Open,,Edit1,DSaedAutomationJava_Selenium_AutomationsrcmainjavatestjavaExternal filesgirl.png)
+//    ControlClick(Open,,Button1)
+    @Step("upload cover photo")
+    public static void uploadCoverPhoto() throws Exception {
+        fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+        UiActions.click(fbLeftMenu.userName);
+        UiActions.click(fbProfilePage.updateProfilePicture);
+        UiActions.click(fbProfilePage.uploadProfilePictureBtn);
+        Thread.sleep(3000);
+        Runtime.getRuntime().exec("D:\\SaedAutomation\\Java_Selenium_Automation\\src\\main\\java\\test\\java\\External files\\uploadPicture.exe");
+        UiActions.click(fbProfilePage.saveProfilePhoto);
+    }
+
 }
+

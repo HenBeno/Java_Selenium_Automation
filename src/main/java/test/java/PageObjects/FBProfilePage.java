@@ -36,5 +36,11 @@ public class FBProfilePage {
 
     @FindBy(how = How.XPATH,using ="//div[@data-pagelet='ProfileTimeline']//div[@dir='auto']" )
     public List<WebElement> postsTextList;
+    @FindBy(how = How.XPATH,using ="//div[@aria-label='Update profile picture']" )
+    public WebElement updateProfilePicture;
+    @FindBy(how = How.XPATH,using ="//div[@aria-label='Upload photo']" )
+    public WebElement uploadProfilePictureBtn;
+    @FindBy(how = How.XPATH,using ="//div[@aria-label='Save']" )
+    public WebElement saveProfilePhoto;
 
 }

@@ -61,5 +61,10 @@ public class ChromeTest extends CommonOps {
     public void test8() throws Exception {
         Verifications.verifyStrings(TestFlows.createNewPost(), getDataFromXml("Data", "expectedResult8"));
     }
+    @Test
+    @Step("Verify that profile picture has been uploaded successfully")
+    public void test9() throws Exception {
+        TestFlows.uploadCoverPhoto();
+    }
 
 }

@@ -33,7 +33,7 @@ public class Base {
     protected static FBMainPage fbMainPage;
     protected static FBTopMenu fbTopMenu;
     protected static FBLeftMenu fbLeftMenu;
-    protected static FBUserPage fbUserPage;
+
     protected static FBProfilePage fbProfilePage;
 
 }
