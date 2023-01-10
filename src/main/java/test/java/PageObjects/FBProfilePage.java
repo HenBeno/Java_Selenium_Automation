@@ -46,7 +46,53 @@ public class FBProfilePage {
     private WebElement uptdatedHisProfilePhotTxt;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'1m')]")
     private WebElement pictureUpdateTime;
+    @FindBy(how = How.XPATH, using = "//span[@class=\"xw3qccf xeaf4i8\"]")
+    private WebElement postPrivacyOptions;
+    @FindBy(how = How.XPATH, using = "//div[@class='xu06os2 x1ok221b']/span[text()='Friends']")
+    private WebElement postPrivacyFriends;
+    @FindBy(how = How.XPATH, using = "//span[text()='Only me']")
+    private WebElement postPrivacyOnlyMe;
+    @FindBy(how = How.XPATH, using = "//span[text()='Public']")
+    private WebElement postPrivacyPublic;
 
+    @FindBy(how = How.XPATH, using = "//span[text()='Done']")
+    private WebElement newPostDoneBtn;
+
+    @FindBy(how = How.XPATH, using = "//div[@data-pagelet='ProfileTimeline']/div[1]//*[contains(text(),'Only')]")
+    private WebElement onlyMeChecker;
+
+    @FindBy(how = How.XPATH, using = "//div[@data-pagelet='ProfileTimeline']/div[1]//*[contains(text(),'Public')]")
+    private WebElement publicChecker;
+
+    @FindBy(how = How.XPATH, using = "//div[@data-pagelet='ProfileTimeline']/div[1]//*[contains(text(),'friends')]")
+    private WebElement friendsChecker;
+
+
+
+
+    public WebElement getPostPrivacyPublic() {
+        return this.postPrivacyPublic;
+    }
+
+    public WebElement getOnlyMeChecker() {
+        return this.onlyMeChecker;
+    }
+
+    public WebElement getNewPostDoneBtn() {
+        return this.newPostDoneBtn;
+    }
+
+    public WebElement getPostPrivacyOnlyMe() {
+        return this.postPrivacyOnlyMe;
+    }
+
+    public WebElement getPostPrivacyFriends() {
+        return this.postPrivacyFriends;
+    }
+
+    public WebElement getPostPrivacyOptions() {
+        return this.postPrivacyOptions;
+    }
 
     public WebElement getPostsBtn() {
         return this.postsBtn;
