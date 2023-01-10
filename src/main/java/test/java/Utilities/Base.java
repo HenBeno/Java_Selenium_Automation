@@ -2,6 +2,9 @@ package test.java.Utilities;
 
 
 import org.apache.logging.log4j.*;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,6 +12,7 @@ import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
 import test.java.PageObjects.*;
 
+import java.io.Writer;
 import java.util.Properties;
 
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
@@ -39,5 +43,16 @@ public class Base {
 
 
     protected static SoftAssert softAssert;
+
+
+    //DDT
+    protected static HSSFWorkbook workbook;
+    protected static HSSFSheet worksheet;
+    protected static DataFormatter formatter= new DataFormatter();
+    protected static String SheetName= "data";
+    protected static  String file_location = "src/main/resources/Credentials.xlsx";
+    protected static String Res;
+    Write obj1=new Write();
+    public int DataSet=-1;
 
 }
