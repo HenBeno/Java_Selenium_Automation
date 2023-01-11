@@ -5,6 +5,8 @@ import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
 import test.java.Utilities.CommonOps;
 
+import java.util.Objects;
+
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
@@ -32,7 +34,7 @@ public class TestFlows extends CommonOps {
     }
 
     @Step("Verify groups page")
-    public static String fbGroupsPage()  {
+    public static String fbGroupsPage() {
         UiActions.click(fbTopMenu.groupsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
@@ -63,8 +65,8 @@ public class TestFlows extends CommonOps {
     }
 
     @Step("Create new post")
-    public static String createNewPost() throws Exception {
-        createTextPost("Username1", "password1");
+    public static String createNewPost(String textOfPost) throws Exception {
+        createTextPost(textOfPost);
         return UiActions.getText(fbProfilePage.getPostsTextList().get(0));
     }
 
@@ -91,24 +93,31 @@ public class TestFlows extends CommonOps {
     }
 
     @Step("upload post, change privacy and compeare to expected results")
-    public static void privacyChecker() throws Exception {
-        createTextPost("userName2", "password2");
-
-
+    public static String privacyChecker(String privacyType, String textForPost) throws Exception {
+        createTextPost(textForPost);
+        UiActions.click(fbProfilePage.getPostPrivacyOptions());
+        if (Objects.equals(fbProfilePage.getPostPrivacyOnlyMe().getText(), privacyType)) {
+            UiActions.click(fbProfilePage.getPostPrivacyOnlyMe());
+        } else if (Objects.equals(fbProfilePage.getPostPrivacyPublic().getText(), privacyType)) {
+            UiActions.click(fbProfilePage.getPostPrivacyPublic());
+        }
+        UiActions.click(fbProfilePage.getSavePrivacyChoice());
+        return UiActions.getText(fbProfilePage.getCurrentPrivacyValue());
     }
 
-    private static void createTextPost(String username, String password) throws Exception {
-        Thread.sleep(1000);
+    private static void createTextPost(String postText) throws Exception {
+
         UiActions.click(fbLeftMenu.userName);
-        Thread.sleep(2000);
+
         UiActions.click(fbProfilePage.getClickToOpenTextAreaNewPosts());
-        Thread.sleep(2000);
+
         UiActions.click(fbProfilePage.getTextAreaNewPosts());
-        Thread.sleep(2000);
-        UiActions.UpdateText(fbProfilePage.getTextAreaNewPosts(), "Hey Hey Hey");
-        Thread.sleep(2000);
+
+        UiActions.UpdateText(fbProfilePage.getTextAreaNewPosts(), postText);
+
         UiActions.click(fbProfilePage.getSenNewPostBtn());
-        Thread.sleep(2000);
+        Thread.sleep(3000);
+
     }
 
 }

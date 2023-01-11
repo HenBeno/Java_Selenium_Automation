@@ -46,7 +46,7 @@ public class FBProfilePage {
     private WebElement uptdatedHisProfilePhotTxt;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'1m')]")
     private WebElement pictureUpdateTime;
-    @FindBy(how = How.XPATH, using = "//span[@class=\"xw3qccf xeaf4i8\"]")
+    @FindBy(how = How.XPATH, using = "//div[@aria-label='Edit Privacy']")
     private WebElement postPrivacyOptions;
     @FindBy(how = How.XPATH, using = "//div[@class='xu06os2 x1ok221b']/span[text()='Friends']")
     private WebElement postPrivacyFriends;
@@ -67,8 +67,30 @@ public class FBProfilePage {
     @FindBy(how = How.XPATH, using = "//div[@data-pagelet='ProfileTimeline']/div[1]//*[contains(text(),'friends')]")
     private WebElement friendsChecker;
 
+    public WebElement getCurrentPrivacyValue() {
+        return this.currentPrivacyValue;
+    }
+
+    @FindBy(how = How.XPATH, using = "//span[@class='xzpqnlu x179tack x10l6tqk']")
+    private WebElement currentPrivacyValue;
 
 
+    //span[@class='xzpqnlu x179tack x10l6tqk']
+
+    @FindBy(how = How.XPATH, using = "//div[@aria-label='Save']")
+    private WebElement savePrivacyChoice;
+
+    public WebElement getPublicChecker() {
+        return this.publicChecker;
+    }
+
+    public WebElement getFriendsChecker() {
+        return this.friendsChecker;
+    }
+
+    public WebElement getSavePrivacyChoice() {
+        return this.savePrivacyChoice;
+    }
 
     public WebElement getPostPrivacyPublic() {
         return this.postPrivacyPublic;
