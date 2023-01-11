@@ -9,7 +9,7 @@ import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
     @Step("Login to FB")
-    public static void fbLoginTest(String userName, String password) throws InterruptedException {
+    public static void loginMethod(String userName, String password) throws Exception {
         UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
@@ -19,7 +19,6 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify home page")
     public static String fbHomePage() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.homeBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
@@ -27,15 +26,13 @@ public class TestFlows extends CommonOps {
 
     @Step("Verify friends page")
     public static String fbFriendsPage() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbTopMenu.friendsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.friendsBtn, "aria-current");
     }
 
     @Step("Verify groups page")
-    public static String fbGroupsPage() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
+    public static String fbGroupsPage()  {
         UiActions.click(fbTopMenu.groupsBtn);
         System.out.println(UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.groupsBtn, "aria-current");
@@ -67,28 +64,14 @@ public class TestFlows extends CommonOps {
 
     @Step("Create new post")
     public static String createNewPost() throws Exception {
-        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
-        Thread.sleep(1000);
-        UiActions.click(fbLeftMenu.userName);
-        Thread.sleep(2000);
-        UiActions.click(fbProfilePage.getClickToOpenTextAreaNewPosts());
-        Thread.sleep(2000);
-        UiActions.click(fbProfilePage.getTextAreaNewPosts());
-        Thread.sleep(2000);
-        UiActions.UpdateText(fbProfilePage.getTextAreaNewPosts(), "Hey Hey Hey");
-        Thread.sleep(2000);
-        UiActions.click(fbProfilePage.getSenNewPostBtn());
-        Thread.sleep(2000);
+        createTextPost("Username1", "password1");
         return UiActions.getText(fbProfilePage.getPostsTextList().get(0));
     }
 
-    //    ControlFocus(Open,,Edit1)
-//    ControlSetText(Open,,Edit1,DSaedAutomationJava_Selenium_AutomationsrcmainjavatestjavaExternal filesgirl.png)
-//    ControlClick(Open,,Button1)
+
     @Step("upload cover photo")
-    public static SoftAssert uploadCoverPhoto() throws Exception {
+    public static SoftAssert uploadProfilePhoto() throws Exception {
         softAssert = new SoftAssert();
-        fbLoginTest(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
         UiActions.click(fbLeftMenu.userName);
         UiActions.click(fbProfilePage.getUpdateProfilePicture());
         UiActions.click(fbProfilePage.getUploadProfilePictureBtn());
@@ -105,6 +88,27 @@ public class TestFlows extends CommonOps {
 
         return softAssert;
 
+    }
+
+    @Step("upload post, change privacy and compeare to expected results")
+    public static void privacyChecker() throws Exception {
+        createTextPost("userName2", "password2");
+
+
+    }
+
+    private static void createTextPost(String username, String password) throws Exception {
+        Thread.sleep(1000);
+        UiActions.click(fbLeftMenu.userName);
+        Thread.sleep(2000);
+        UiActions.click(fbProfilePage.getClickToOpenTextAreaNewPosts());
+        Thread.sleep(2000);
+        UiActions.click(fbProfilePage.getTextAreaNewPosts());
+        Thread.sleep(2000);
+        UiActions.UpdateText(fbProfilePage.getTextAreaNewPosts(), "Hey Hey Hey");
+        Thread.sleep(2000);
+        UiActions.click(fbProfilePage.getSenNewPostBtn());
+        Thread.sleep(2000);
     }
 
 }

@@ -1,11 +1,12 @@
 package TestCase;
 
 import io.qameta.allure.Step;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import test.java.Extensions.Verifications;
 import test.java.TestFlow.TestFlows;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 import test.java.Utilities.ManageDDT;
 
@@ -13,11 +14,15 @@ import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 @Listeners(test.java.Utilities.Listeners.class)
 public class ChromeTest extends CommonOps {
+@BeforeMethod
+public void beforeMethodOperations() throws Exception {
+    TestFlows.loginMethod(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
+}
 
     @Test
     @Step("Verify the login successfully done [Check user name]")
     public void test1() throws Exception {
-        TestFlows.fbLoginTest(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
+//        TestFlows.loginMethod(getDataFromXml("Data", "userName1"),getDataFromXml("Data", "password1"));
         Verifications.verifyTextInElement(fbLeftMenu.userName,getDataFromXml("Data","expectedResult1"));
     }
 
@@ -65,13 +70,13 @@ public class ChromeTest extends CommonOps {
     @Test
     @Step("Verify that profile picture has been uploaded successfully")
     public void test9() throws Exception {
-        TestFlows.uploadCoverPhoto().assertAll();
+        TestFlows.uploadProfilePhoto().assertAll();
     }
 
     @Test(dataProvider = "myDDT", dataProviderClass = ManageDDT.class)
     @Step("check ddt functionality")
-    public void checkDDTLoginTest(String username, String password) throws InterruptedException {
-        TestFlows.fbLoginTest(username,password);
+    public void test10(String username, String password) throws Exception {
+        TestFlows.loginMethod(username,password);
     }
 
 }
