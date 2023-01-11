@@ -5,6 +5,8 @@ import org.apache.logging.log4j.*;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,8 +48,8 @@ public class Base {
 
 
     //DDT
-    protected static HSSFWorkbook workbook;
-    protected static HSSFSheet worksheet;
+    protected static XSSFWorkbook workbook;
+    protected static XSSFSheet worksheet;
     protected static DataFormatter formatter= new DataFormatter();
     protected static String SheetName= "data";
     protected static  String file_location = "src/main/resources/Credentials.xlsx";
