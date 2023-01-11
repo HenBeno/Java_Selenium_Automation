@@ -28,6 +28,7 @@
         <allure-testng.version>2.20.1</allure-testng.version>
         <monte-screen-recorder-version>0.7.7.0</monte-screen-recorder-version>
         <jutils-version>1.23</jutils-version>
+        <mongodb-version>3.12.11</mongodb-version>
     </properties>
 
     <dependencies>
@@ -96,6 +97,13 @@
             <artifactId>selenium-jutils</artifactId>
             <version>${jutils-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongodb-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
