@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ManageDDT extends Base {
-    @DataProvider
+    @DataProvider(name = "myDDT")
     public static Object[][] ReadVariant() throws IOException {
         FileInputStream fileInputStream = new FileInputStream(file_location); //Excel sheet file location get mentioned here
         workbook = new HSSFWorkbook(fileInputStream); //get my workbook

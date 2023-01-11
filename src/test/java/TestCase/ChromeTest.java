@@ -7,6 +7,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
+import test.java.Utilities.ManageDDT;
 
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
@@ -65,6 +66,12 @@ public class ChromeTest extends CommonOps {
     @Step("Verify that profile picture has been uploaded successfully")
     public void test9() throws Exception {
         TestFlows.uploadCoverPhoto().assertAll();
+    }
+
+    @Test(dataProvider = "myDDT", dataProviderClass = ManageDDT.class)
+    @Step("check ddt functionality")
+    public void checkDDTLoginTest(String username, String password) throws InterruptedException {
+        TestFlows.fbLoginTest(username,password);
     }
 
 }

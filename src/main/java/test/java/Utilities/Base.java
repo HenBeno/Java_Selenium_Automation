@@ -52,7 +52,7 @@ public class Base {
     protected static String SheetName= "data";
     protected static  String file_location = "src/main/resources/Credentials.xlsx";
     protected static String Res;
-    Write obj1=new Write();
+//    Write obj1=new Write();
     public int DataSet=-1;
 
 }

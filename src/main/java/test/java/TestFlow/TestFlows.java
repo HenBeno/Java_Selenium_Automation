@@ -13,6 +13,7 @@ public class TestFlows extends CommonOps {
         UiActions.UpdateText(loginPageFB.loginInput, userName);
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
+        Thread.sleep(5000);
     }
 
 
