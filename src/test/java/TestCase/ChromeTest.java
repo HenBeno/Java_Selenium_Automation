@@ -78,18 +78,23 @@ public class ChromeTest extends CommonOps {
     @Test(dataProvider = "myDDT", dataProviderClass = ManageDDT.class)
     @Step("check ddt functionality")
     public void test10(String privacyType, String textForText, String expectedResult, String RS) throws Exception {
-
+        DataSet++;
         try {
             Verifications.verifyStrings(TestFlows.privacyChecker(privacyType, textForText), expectedResult);
 
             RS = "Pass";
+            obj1.WriteResult(RS, DataSet + 1);
+            System.out.println(RS);
 
         } catch (AssertionError e) {
+
             System.out.println(e.getMessage());
             RS = "Fail";
+            obj1.WriteResult(RS, DataSet + 1);
+            System.out.println(RS);
         }
-        obj1.WriteResult(RS, DataSet + 1);
-        System.out.println(RS);
+
+
     }
 
 }
