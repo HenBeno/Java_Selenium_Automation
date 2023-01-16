@@ -1,12 +1,16 @@
 package test.java.Utilities;
 
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.apache.logging.log4j.*;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.bson.Document;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -56,5 +60,11 @@ public class Base {
     protected static String Res;
 //    Write obj1=new Write();
     public int DataSet=-1;
+
+
+    //DB
+    protected static MongoClient client;
+    protected static MongoDatabase db;
+    protected static MongoCollection<Document> collection;
 
 }

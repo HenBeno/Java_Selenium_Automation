@@ -10,14 +10,11 @@ import org.testng.annotations.Test;
 import test.java.Utilities.CommonOps;
 import test.java.Utilities.ManageDDT;
 
+import static test.java.TestFlow.TestFlows.loginUsingMongoDB;
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 @Listeners(test.java.Utilities.Listeners.class)
 public class ChromeTest extends CommonOps {
-    @BeforeMethod
-    public void beforeMethodOperations() throws Exception {
-        TestFlows.loginMethod(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
-    }
 
     @Test
     @Step("Verify the login successfully done [Check user name]")
@@ -78,6 +75,13 @@ public class ChromeTest extends CommonOps {
     @Step("check ddt functionality")
     public void test10(String privacyType, String textForText, String expectedResult) throws Exception {
         Verifications.verifyStrings(TestFlows.privacyChecker(privacyType, textForText), expectedResult);
+    }
+
+    @Test
+    @Step("Login using data from MongoDB")
+    public void test11() throws Exception {
+        //TODO: Need to add Verifications
+        TestFlows.loginUsingMongoDB();
     }
 
 }

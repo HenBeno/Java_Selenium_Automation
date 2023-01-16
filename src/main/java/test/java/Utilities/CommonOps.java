@@ -20,6 +20,7 @@ import test.java.Extensions.UiActions;
 import java.io.IOException;
 import java.time.Duration;
 
+import static test.java.TestFlow.TestFlows.loginMethod;
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 
@@ -34,8 +35,8 @@ public class CommonOps extends Base{
         initAction();
         initWait();
         initPageObjectManager();
+        startLogin();
     }
-
 
     private void initLog() throws IOException {
         logger = LogManager.getLogger(Base.class);
@@ -101,13 +102,9 @@ public class CommonOps extends Base{
         logger.info("Initialized POM");
     }
 
-//    @BeforeMethod
-//    public void setupDriver() {
-//    }
-//
-//    @AfterMethod
-//    public void tearDownMethod() throws InterruptedException {
-//    }
+    private void startLogin() throws Exception {
+        loginMethod(getDataFromXml("Data", "userName1"), getDataFromXml("Data", "password1"));
+    }
 
     @AfterMethod
     public void tearDown() throws InterruptedException {

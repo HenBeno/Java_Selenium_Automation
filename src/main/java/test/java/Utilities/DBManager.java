@@ -1,32 +1,35 @@
 package test.java.Utilities;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 
+import com.mongodb.client.model.Projections;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
-public class DBManager {
+public class DBManager extends Base{
 
     // Info source: https://www.youtube.com/watch?v=GiNMFI8wnIg
-    public static void main(String[] args){
+    public static FindIterable<Document> getDataFromDB(String dataType, String dataType2){
 
-        MongoClient client = MongoClients.create("mongodb+srv://HenB:HenB123123@cluster0.tybl6wh.mongodb.net/?retryWrites=true&w=majority");
+        client = MongoClients.create("mongodb+srv://HenB:HenB123123@cluster0.tybl6wh.mongodb.net/?retryWrites=true&w=majority");
 
-        MongoDatabase db = client.getDatabase("MyDBCollection");
+        db = client.getDatabase("fbDB");
 
-        MongoCollection<Document> col = db.getCollection("sampleCol");
+        collection = db.getCollection("FBLoginData");
 
-//        Document sampleDoc = new Document("_id", "2").append("name", "Lior");
+        Bson projection = Projections.include(dataType, dataType2);
+        FindIterable<Document> iterable = collection.find().projection(projection);
+
+        return iterable;
+
+//        """Add Data"""
+//                Document doc = new Document("_id", "1").append("username", "yegati8771@dewareff.com")
+//                .append("pass", "Lior96");
+//        Document doc2 = new Document("_id", "2").append("username", "yofigi5953@dewareff.com")
+//                .append("pass", "Topaz96");
 //
-//        Document sampleDoc1 = new Document("_id", "2").append("name", "Hen");
-
-        Document sampleDoc2 = new Document("_id", "3").append("name", "Jondi");
-
-//        col.insertOne(sampleDoc);
-//        col.insertOne(sampleDoc1);
-        col.insertOne(sampleDoc2);
+//        collection.insertOne(doc);
+//        collection.insertOne(doc2);
 
     }
 }

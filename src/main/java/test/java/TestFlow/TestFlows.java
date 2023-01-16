@@ -1,12 +1,15 @@
 package test.java.TestFlow;
 
 import io.qameta.allure.Step;
+import org.bson.Document;
 import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
 import test.java.Utilities.CommonOps;
+import test.java.Utilities.GetDataFromXml;
 
 import java.util.Objects;
 
+import static test.java.Utilities.DBManager.getDataFromDB;
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 public class TestFlows extends CommonOps {
@@ -16,6 +19,11 @@ public class TestFlows extends CommonOps {
         UiActions.UpdateText(loginPageFB.passwordInput, password);
         UiActions.click(loginPageFB.loginBtn);
         Thread.sleep(5000);
+    }
+
+    public static void logOut(){
+        UiActions.click(fbTopMenu.circleProfileLogo);
+        UiActions.click(fbTopMenu.logOutBtn);
     }
 
 
@@ -92,7 +100,7 @@ public class TestFlows extends CommonOps {
 
     }
 
-    @Step("upload post, change privacy and compeare to expected results")
+    @Step("upload post, change privacy and compare to expected results")
     public static String privacyChecker(String privacyType, String textForPost) throws Exception {
         createTextPost(textForPost);
         UiActions.click(fbProfilePage.getPostPrivacyOptions());
@@ -117,6 +125,19 @@ public class TestFlows extends CommonOps {
 
         UiActions.click(fbProfilePage.getSenNewPostBtn());
         Thread.sleep(3000);
+
+    }
+
+    public static void loginUsingMongoDB() throws Exception {
+        logOut();
+        for (Document doc : getDataFromDB("username", "pass")) {
+//            System.out.println((Document.parse(doc.toJson()).get("username")).toString());
+//            System.out.println((Document.parse(doc.toJson()).get("pass")).toString());
+            String user = (Document.parse(doc.toJson()).get("username")).toString();
+            String pass = (Document.parse(doc.toJson()).get("pass")).toString();
+            loginMethod(user, pass);
+            logOut();
+        }
 
     }
 

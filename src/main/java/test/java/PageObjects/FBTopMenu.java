@@ -25,6 +25,11 @@ public class FBTopMenu {
 
     @FindBy(how = How.XPATH,using ="//input[@type='search'][@placeholder='Search Facebook']" )
     public WebElement searchbarInput;
-    //input[@type='search'][@placeholder='Search Facebook']
+
+    @FindBy(how = How.XPATH,using ="//*[local-name()='svg' and @aria-label='Your profile']" )
+    public WebElement circleProfileLogo;
+
+    @FindBy(how = How.XPATH,using ="//span[text()='Log Out']" )
+    public WebElement logOutBtn;
 
 }
