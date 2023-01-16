@@ -22,7 +22,7 @@ public class Write extends Base {
 
     @Test
     public void WriteResult(String Ress, int DR) throws Exception {
-        FileInputStream file_input_stream = new FileInputStream("/home/users/shivani.kukreti/Documents/akeneo-product.xls");
+        FileInputStream file_input_stream = new FileInputStream("src/main/resources/Credentials.xlsx");
         workbook = new XSSFWorkbook(file_input_stream);
         worksheet = workbook.getSheet(SheetName);
         XSSFRow Row = worksheet.getRow(0);
@@ -59,7 +59,7 @@ public class Write extends Base {
             }
 
         }
-        FileOutputStream file_output_stream = new FileOutputStream("/home/users/shivani.kukreti/Documents/akeneo-product.xls");
+        FileOutputStream file_output_stream = new FileOutputStream("src/main/resources/Credentials.xlsx");
         workbook.write(file_output_stream);
         file_output_stream.close();
         if (col_num == -1) {

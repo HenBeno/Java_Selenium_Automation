@@ -50,11 +50,11 @@ public class Base {
     //DDT
     protected static XSSFWorkbook workbook;
     protected static XSSFSheet worksheet;
-    protected static DataFormatter formatter= new DataFormatter();
-    protected static String SheetName= "data";
-    protected static  String file_location = "src/main/resources/Credentials.xlsx";
+    protected static DataFormatter formatter = new DataFormatter();
+    protected static String SheetName = "data";
+    protected static String file_location = "src/main/resources/Credentials.xlsx";
     protected static String Res;
-//    Write obj1=new Write();
-    public int DataSet=-1;
+    public static Write obj1 = new Write();
+    public int DataSet = 1;
 
 }

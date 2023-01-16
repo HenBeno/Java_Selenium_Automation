@@ -7,6 +7,7 @@ import test.java.Extensions.Verifications;
 import test.java.TestFlow.TestFlows;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import test.java.Utilities.Base;
 import test.java.Utilities.CommonOps;
 import test.java.Utilities.ManageDDT;
 
@@ -76,8 +77,19 @@ public class ChromeTest extends CommonOps {
 
     @Test(dataProvider = "myDDT", dataProviderClass = ManageDDT.class)
     @Step("check ddt functionality")
-    public void test10(String privacyType, String textForText, String expectedResult) throws Exception {
-        Verifications.verifyStrings(TestFlows.privacyChecker(privacyType, textForText), expectedResult);
+    public void test10(String privacyType, String textForText, String expectedResult, String RS) throws Exception {
+
+        try {
+            Verifications.verifyStrings(TestFlows.privacyChecker(privacyType, textForText), expectedResult);
+
+            RS = "Pass";
+
+        } catch (AssertionError e) {
+            System.out.println(e.getMessage());
+            RS = "Fail";
+        }
+        obj1.WriteResult(RS, DataSet + 1);
+        System.out.println(RS);
     }
 
 }
