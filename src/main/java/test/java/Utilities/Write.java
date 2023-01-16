@@ -59,7 +59,7 @@ public class Write extends Base {
             }
 
         }
-        FileOutputStream file_output_stream = new FileOutputStream("/home/users/shivani.kukreti/Documents/akeneo-product.xls");
+        FileOutputStream file_output_stream = new FileOutputStream("src/main/resources/Credentials.xlsx");
         workbook.write(file_output_stream);
         file_output_stream.close();
         if (col_num == -1) {
