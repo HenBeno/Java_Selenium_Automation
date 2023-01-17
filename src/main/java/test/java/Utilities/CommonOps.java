@@ -11,9 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import test.java.Extensions.UiActions;
 
@@ -24,7 +22,7 @@ import static test.java.TestFlow.TestFlows.loginMethod;
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 
-public class CommonOps extends Base{
+public class CommonOps extends Base {
     @BeforeMethod
     public void setupClass() throws Exception {
         String browserType = getDataFromXml("Config", "browser");
@@ -44,7 +42,7 @@ public class CommonOps extends Base{
     }
 
     private void initBrowser(String browserType) {
-        switch (browserType.toLowerCase()){
+        switch (browserType.toLowerCase()) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
@@ -112,7 +110,6 @@ public class CommonOps extends Base{
         driver.quit();
         logger.info("Browser closed");
     }
-
 
 
 }
