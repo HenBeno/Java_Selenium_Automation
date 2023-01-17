@@ -1,15 +1,15 @@
 package test.java.Utilities;
 
-import com.mongodb.client.*;
-
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.model.Projections;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-public class DBManager extends Base{
+public class DBManager extends Base {
 
     // Info source: https://www.youtube.com/watch?v=GiNMFI8wnIg
-    public static FindIterable<Document> getDataFromDB(String dataType, String dataType2){
+    public static FindIterable<Document> getDataFromDB(String dataType, String dataType2) {
 
         client = MongoClients.create("mongodb+srv://HenB:HenB123123@cluster0.tybl6wh.mongodb.net/?retryWrites=true&w=majority");
 

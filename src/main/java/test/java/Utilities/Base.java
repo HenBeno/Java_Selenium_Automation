@@ -4,9 +4,7 @@ package test.java.Utilities;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import org.apache.logging.log4j.*;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -17,11 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
 import test.java.PageObjects.*;
-
-import java.io.Writer;
-import java.util.Properties;
-
-import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 //User name: yegati8771@dewareff.com
 //Pass: Lior96
@@ -54,17 +47,15 @@ public class Base {
     //DDT
     protected static XSSFWorkbook workbook;
     protected static XSSFSheet worksheet;
-    protected static DataFormatter formatter= new DataFormatter();
-    protected static String SheetName= "data";
-    protected static  String file_location = "src/main/resources/Credentials.xlsx";
+    protected static DataFormatter formatter = new DataFormatter();
+    protected static String SheetName = "data";
+    protected static String file_location = "src/main/resources/Credentials.xlsx";
     protected static String Res;
-//    Write obj1=new Write();
-    public int DataSet=-1;
-
-
     //DB
     protected static MongoClient client;
     protected static MongoDatabase db;
     protected static MongoCollection<Document> collection;
+    //    Write obj1=new Write();
+    public int DataSet = -1;
 
 }

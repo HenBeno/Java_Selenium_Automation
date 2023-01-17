@@ -1,17 +1,13 @@
 package TestCase;
 
 import io.qameta.allure.Step;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import test.java.Extensions.Verifications;
-import test.java.TestFlow.TestFlows;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import test.java.Utilities.Base;
+import test.java.Extensions.Verifications;
+import test.java.TestFlow.TestFlows;
 import test.java.Utilities.CommonOps;
 import test.java.Utilities.ManageDDT;
 
-import static test.java.TestFlow.TestFlows.loginUsingMongoDB;
 import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 
 @Listeners(test.java.Utilities.Listeners.class)
@@ -25,19 +21,19 @@ public class ChromeTest extends CommonOps {
     }
 
     @Test
-    @Step("Verify the movement to home page throw top menu")
+    @Step("Verify that the current menu chosen is highlight [Home]")
     public void test2() throws Exception {
         Verifications.verifyStrings(TestFlows.fbHomePage(), getDataFromXml("Data", "mouseHover"));
     }
 
     @Test
-    @Step("Verify the movement to friends page using the top menu")
+    @Step("Verify that the current menu chosen is highlight [Friends]")
     public void test3() throws Exception {
         Verifications.verifyStrings(TestFlows.fbFriendsPage(), getDataFromXml("Data", "mouseHover"));
     }
 
     @Test
-    @Step("Verify the movement to groups page using the top menu")
+    @Step("Verify that the current menu chosen is highlight [Groups]")
     public void test4() throws Exception {
         Verifications.verifyStrings(TestFlows.fbGroupsPage(), getDataFromXml("Data", "mouseHover"));
     }
@@ -61,9 +57,11 @@ public class ChromeTest extends CommonOps {
     }
 
     @Test
-    @Step("Verify create new post and verify by post text")
+    @Step("Verify new post has been created successfully [verify by post text]")
     public void test8() throws Exception {
-        Verifications.verifyStrings(TestFlows.createNewPost("Hey Hey Hey"), getDataFromXml("Data", "expectedResult8"));
+        Verifications.verifyStrings(
+                TestFlows.createNewPost(getDataFromXml("Data", "newPostVerify")),
+                getDataFromXml("Data", "expectedResult8"));
     }
 
     @Test
@@ -73,7 +71,7 @@ public class ChromeTest extends CommonOps {
     }
 
     @Test(dataProvider = "myDDT", dataProviderClass = ManageDDT.class)
-    @Step("check ddt functionality")
+    @Step("Verify privacy type of new posts using DDT")
     public void test10(String privacyType, String textForText, String expectedResult) throws Exception {
         Verifications.verifyStrings(TestFlows.privacyChecker(privacyType, textForText), expectedResult);
     }

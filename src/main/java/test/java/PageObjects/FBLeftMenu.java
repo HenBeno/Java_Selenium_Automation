@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class FBLeftMenu {
-    @FindBy(how = How.XPATH,using ="//div[@data-pagelet=\"LeftRail\"]//a[contains(@href,'https://www.facebook.com/profile.php?id=')]" )
+    @FindBy(how = How.XPATH, using = "//div[@data-pagelet=\"LeftRail\"]//a[contains(@href,'https://www.facebook.com/profile.php?id=')]")
     public WebElement userName;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Find Friends')]")
     public WebElement findFriendsBtn;
@@ -55,10 +55,6 @@ public class FBLeftMenu {
     public WebElement recentAdActivityBtn;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'See less')]")
     public WebElement seeLessBtn;
-
-
-
-
 
 
 }

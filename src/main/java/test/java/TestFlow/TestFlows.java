@@ -5,7 +5,6 @@ import org.bson.Document;
 import org.testng.asserts.SoftAssert;
 import test.java.Extensions.UiActions;
 import test.java.Utilities.CommonOps;
-import test.java.Utilities.GetDataFromXml;
 
 import java.util.Objects;
 
@@ -15,22 +14,18 @@ import static test.java.Utilities.GetDataFromXml.getDataFromXml;
 public class TestFlows extends CommonOps {
     @Step("Login to FB")
     public static void loginMethod(String userName, String password) throws Exception {
-        UiActions.UpdateText(loginPageFB.loginInput, userName);
-        UiActions.UpdateText(loginPageFB.passwordInput, password);
-        UiActions.click(loginPageFB.loginBtn);
-        Thread.sleep(5000);
+        loginPageFB.loginToFB(userName, password);
     }
 
-    public static void logOut(){
+    @Step("Logout from FB")
+    public static void logOut() {
         UiActions.click(fbTopMenu.circleProfileLogo);
         UiActions.click(fbTopMenu.logOutBtn);
     }
 
-
     @Step("Verify home page")
     public static String fbHomePage() throws Exception {
         UiActions.click(fbTopMenu.homeBtn);
-        System.out.println(UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current"));
         return UiActions.GetElementAttribute(fbTopMenu.homeBtn, "aria-current");
     }
 
@@ -79,7 +74,7 @@ public class TestFlows extends CommonOps {
     }
 
 
-    @Step("upload cover photo")
+    @Step("Upload cover photo")
     public static SoftAssert uploadProfilePhoto() throws Exception {
         softAssert = new SoftAssert();
         UiActions.click(fbLeftMenu.userName);
@@ -100,7 +95,7 @@ public class TestFlows extends CommonOps {
 
     }
 
-    @Step("upload post, change privacy and compare to expected results")
+    @Step("Upload new post with specific privacy")
     public static String privacyChecker(String privacyType, String textForPost) throws Exception {
         createTextPost(textForPost);
         UiActions.click(fbProfilePage.getPostPrivacyOptions());
@@ -112,7 +107,7 @@ public class TestFlows extends CommonOps {
         UiActions.click(fbProfilePage.getSavePrivacyChoice());
         return UiActions.getText(fbProfilePage.getCurrentPrivacyValue());
     }
-
+    @Step("Create new post")
     private static void createTextPost(String postText) throws Exception {
 
         UiActions.click(fbLeftMenu.userName);
@@ -124,10 +119,12 @@ public class TestFlows extends CommonOps {
         UiActions.UpdateText(fbProfilePage.getTextAreaNewPosts(), postText);
 
         UiActions.click(fbProfilePage.getSenNewPostBtn());
+
         Thread.sleep(3000);
 
     }
 
+    @Step("Login to FB uding data from MongoDB")
     public static void loginUsingMongoDB() throws Exception {
         logOut();
         for (Document doc : getDataFromDB("username", "pass")) {

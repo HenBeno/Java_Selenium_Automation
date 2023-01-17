@@ -1,11 +1,9 @@
 package test.java.Utilities;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.Objects;
 
 
@@ -14,13 +12,11 @@ public class GetDataFromXml {
         Document doc;
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        if (Objects.equals(dataType, "Config")){
+        if (Objects.equals(dataType, "Config")) {
             doc = dBuilder.parse("src/main/resources/configuration.xml");
-        }
-        else if (Objects.equals(dataType, "Data")) {
+        } else if (Objects.equals(dataType, "Data")) {
             doc = dBuilder.parse("src/main/resources/testData.xml");
-        }
-        else {
+        } else {
             doc = dBuilder.parse("src/main/resources/testData.xml");
         }
         doc.getDocumentElement().normalize();

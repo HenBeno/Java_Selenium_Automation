@@ -2,7 +2,6 @@ package test.java.Utilities;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
-import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 
 public class Listeners extends CommonOps implements ITestListener {
@@ -31,7 +30,7 @@ public class Listeners extends CommonOps implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult result) {
-        System.out.println("Method skipped "+ result.getName());
+        System.out.println("Method skipped " + result.getName());
 
     }
 

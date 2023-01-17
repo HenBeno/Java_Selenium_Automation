@@ -1,8 +1,6 @@
 package test.java.Utilities;
 
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -10,8 +8,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
-
-
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 
 public class Write extends Base {

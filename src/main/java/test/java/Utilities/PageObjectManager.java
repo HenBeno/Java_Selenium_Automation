@@ -1,7 +1,7 @@
 package test.java.Utilities;
 
-import test.java.PageObjects.*;
 import org.openqa.selenium.support.PageFactory;
+import test.java.PageObjects.*;
 
 public class PageObjectManager extends Base {
     public static void initWebPage() {

@@ -66,19 +66,17 @@ public class FBProfilePage {
 
     @FindBy(how = How.XPATH, using = "//div[@data-pagelet='ProfileTimeline']/div[1]//*[contains(text(),'friends')]")
     private WebElement friendsChecker;
-
-    public WebElement getCurrentPrivacyValue() {
-        return this.currentPrivacyValue;
-    }
-
     @FindBy(how = How.XPATH, using = "//span[@class='xzpqnlu x179tack x10l6tqk']")
     private WebElement currentPrivacyValue;
+    @FindBy(how = How.XPATH, using = "//div[@aria-label='Save']")
+    private WebElement savePrivacyChoice;
 
 
     //span[@class='xzpqnlu x179tack x10l6tqk']
 
-    @FindBy(how = How.XPATH, using = "//div[@aria-label='Save']")
-    private WebElement savePrivacyChoice;
+    public WebElement getCurrentPrivacyValue() {
+        return this.currentPrivacyValue;
+    }
 
     public WebElement getPublicChecker() {
         return this.publicChecker;

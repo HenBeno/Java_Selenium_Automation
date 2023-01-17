@@ -112,6 +112,7 @@ public class UiActions extends Base {
         wait.until(ExpectedConditions.attributeToBeNotEmpty(elem1, attribute));
         return elem1.getAttribute(attribute);
     }
+
     @Step("Wait until specific element will be invisible ]")
     public static void waitToInvisibility(WebElement element) {
         wait.until(ExpectedConditions.invisibilityOf(element));
